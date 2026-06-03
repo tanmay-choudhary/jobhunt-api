@@ -20,8 +20,7 @@ router.post("/", async (req, res) => {
 
 
 router.get("/", async (req, res) => {
-
-    const snapshot = await collection.get();
+    const snapshot = await collection.orderBy("createdAt", "desc").get();
 
     const jobs = snapshot.docs.map(doc => ({
         id: doc.id,
